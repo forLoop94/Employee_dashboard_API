@@ -1,14 +1,12 @@
 import express from 'express';
 import { sampleData } from './data.js';
+import { getAllUsers } from './controllers/userController.js';
+import userRouter from './routes/api/users.js';
 
 const app = express();
 app.use(express.json());
 
 const port = process.env.PORT || 5000;
-
-app.get('/', (req, res) => {
-  return res.status(200).json(sampleData)
-});
 
 app.post('/', (req, res) => {
   const { body } = req;
@@ -20,3 +18,5 @@ app.post('/', (req, res) => {
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
 })
+
+app.use('/api/users', userRouter)
