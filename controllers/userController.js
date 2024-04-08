@@ -1,5 +1,5 @@
-import { sampleData } from "../data.js"
 import User from '../models/userModel.js';
+import { ObjectId } from 'mongodb';
 
 export const getAllUsers = async(req, res) => {
   const users = await User.find();
@@ -24,21 +24,19 @@ export const createUser = async(req, res) => {
   res.status(201).json(newUser);
 }
 
-export const updateUser = (req, res) => {
- const { id } = req.params;
+export const updateUser = async(req, res) => {
+  const { id } = req.params;
+  const updates = req.body;
 
- const { name, age } = req.body;
- console.log(name, age, id)
+  await User.findByIdAndUpdate(id, updates, { new: true })
 
- const newArr = [...sampleData];
- console.log(newArr);
-
- for (let i = 0; i < newArr.length; i++) {
-  let holder = newArr[i];
-  if(newArr[i].id === parseFloat(id)) {
-    newArr[i].name = !name ? holder.name : name;
-    newArr[i].age = !age ? holder.age : age;
-  }
+  res.status(200).json(updates);
  }
- res.status(200).json(newArr);
+
+export const deleteUser = async(req, res) => {
+  const { id } = req.params
+
+  const afterDeleteOp = await User.findByIdAndDelete(id);
+
+  res.status(200).json(afterDeleteOp);
 }
