@@ -1,6 +1,6 @@
 import express from "express";
 import userRouter from "./routes/api/userRouter.js";
-import authRouter from "./routes/api/authRouter.js";
+import authRouter from "./routes/api/authRouter2.js";
 import connectDB from "./db.js";
 
 const app = express();
