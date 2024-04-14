@@ -30,14 +30,25 @@ GET http://localhost:5000/api/example/posts
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTcxMjkxNjc5Mn0.QMdPqSIMaJ405iy02CXtO-HJYkVdQ6QlgiNURkbcrCQ
 ###
 
-POST http://localhost:5000/api/register
+POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-  "name": "Maxi",
-  "email": "maxi@gmail.com",
+  "name": "Maxima",
+  "email": "maximi@gmail.com",
   "password": 123456,
   "isAdmin": false
 }
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "maxi@gmail.com",
+  "password": "123456"
+}
+
 
 // bcryptjs express-async-handler jsonwebtoken

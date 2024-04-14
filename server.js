@@ -15,4 +15,4 @@ connectDB().then(() => {
 });
 
 app.use("/api/users", userRouter);
-app.use("/api/register", authRouter)
+app.use("/api/auth", authRouter)
