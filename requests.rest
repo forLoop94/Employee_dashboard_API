@@ -2,7 +2,22 @@ GET http://localhost:5000/api/users
 
 ###
 
-POST http://localhost:5000/api/auth/login
+DELETE http://localhost:5000/api/users/661be5303a3394fa82b8358a
+
+###
+
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+  "name": "Felix",
+  "age": 45,
+  "role": "Admin"
+}
+
+###
+
+POST http://localhost:5000/api/sampleauth/login
 Content-Type: application/json
 
 {
@@ -11,5 +26,18 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:5000/api/auth/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTcxMjkxMTcwNn0.nt0KK4aBoL51POyPiaW22kIc_YEIrt7gzfIU4FXZJ8w
+GET http://localhost:5000/api/example/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTcxMjkxNjc5Mn0.QMdPqSIMaJ405iy02CXtO-HJYkVdQ6QlgiNURkbcrCQ
+###
+
+POST http://localhost:5000/api/register
+Content-Type: application/json
+
+{
+  "name": "Maxi",
+  "email": "maxi@gmail.com",
+  "password": 123456,
+  "isAdmin": false
+}
+
+// bcryptjs express-async-handler jsonwebtoken
